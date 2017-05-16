@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Blocipedia</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav>
-    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-    <%= link_to "Sign In", new_user_session_path %>
+  <nav class="navbar">
+    <ul class="navbar-nav nav-item-width">
+      <% if user_signed_in? %>
+        <li class="nav-item pull-right"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete, class: "nav-link" %></li>
+      <% else %>
+        <li class="nav-item pull-right"><%= link_to "Sign In", new_user_session_path, class: "nav-link" %></li>
+        <li class="nav-item pull-right"><%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %></li>
+      <% end %>
+      <% if !user_signed_in? %>
+      <% end %>
+    </ul>
   </nav>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <%= link_to "Sign Up", new_user_registration_path %>
   <%= yield %>
 
 </body>
