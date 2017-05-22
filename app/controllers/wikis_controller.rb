@@ -1,4 +1,9 @@
 class WikisController < ApplicationController
+  include WikisHelper
+
+  before_action :authenticate_user!
+  before_action :update?, except: [:index, :create, :new, :show]
+
   def new
     @wiki = Wiki.new
   end
@@ -8,7 +13,7 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.new({title: params['wiki']['title'], body: params['wiki']['body']})
+    @wiki = Wiki.new({title: params['wiki']['title'], body: params['wiki']['body'], private: params['wiki']['private'] })
     @wiki.user = current_user
 
     if @wiki.save
@@ -31,7 +36,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
 
     if @wiki.save
-      @wiki.update_attributes({ title: params[:wiki][:title], body: params[:wiki][:body] })
+      @wiki.update_attributes({ title: params[:wiki][:title], body: params[:wiki][:body], private: params['wiki']['private'] })
       flash.now[:notice] = "Wiki updated."
       render :show
     else

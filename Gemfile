@@ -15,6 +15,7 @@ group :development do
 end
 
 gem 'devise'
+gem 'pundit'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'

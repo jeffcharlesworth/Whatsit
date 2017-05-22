@@ -1,2 +1,17 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1>Wikis</h1>
+<% @wikis.each do |wiki| %>
+<div class="clearfix">
+  <div class="col-md-6 index-btn">
+    <%= link_to wiki.title, { :controller => "wikis", :action => "show", :id => wiki.id }, class: "col-md-6" %>
+  </div>
+  <div class="col-md-3 index-btn">
+    <%= link_to "Delete", wiki_path(wiki), method: :delete, data: { confirm: "Are you sure you want to delete this wiki?" } %>
+  </div>
+  <div class="col-md-3 index-btn">
+    <%= link_to "Edit", edit_wiki_path(wiki) %>
+  </div>
+</div>
+<% end %>
+<div class="new-wiki">
+  <%=link_to "New Wiki", new_wiki_path, class: "btn btn-default" %>
+</div>
