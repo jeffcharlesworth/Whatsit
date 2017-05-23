@@ -29,7 +29,7 @@ group :development, :test do
  gem 'spring'
  gem 'rspec-rails'
  gem 'shoulda'
- gem 'faker'
+ gem 'faker', git: 'git@github.com:stympy/faker.git'  
  gem 'factory_girl_rails'
  gem 'pry-rails'
 end
