@@ -38,5 +38,8 @@ after_action :upgrade_account, only: [:create]
 
   def destroy
     current_user.update_attributes(role: 'standard')
+    wikis = Wiki.where(user_id: current_user.id)
+    wikis.each { |wiki| wiki.update_attributes(private: false) }
+    redirect_to users_account_path
   end
 end

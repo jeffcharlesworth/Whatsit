@@ -1,0 +1,7 @@
+<h1>Account for <%= current_user.email %></h1>
+<h4><%= current_user.role %></h4>
+<% if current_user.role == 'premium' %>
+  <%= link_to "Downgrade account", charge_path(current_user), method: :delete, data: { confirm: "Are you sure? All of your wikis will become public" } %>
+<% else %>
+  <%= link_to "upgrade account", new_charge_path %>
+<% end %>
