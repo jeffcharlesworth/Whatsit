@@ -1,25 +1,35 @@
 <div class="form-container">
   <%= form_for @wiki do |f| %>
-  <div class="form-label">
-    <%= f.label :title %>
-  </div>
-  <div class="form-entry">
-    <%= f.text_field :title, class: "form-width" %>
-  </div>
-  <div class="form-label">
-    <%= f.label :body %>
-  </div>
-  <div class="form-entry">
-    <%= f.text_area :body, rows: 30, class: "form-width" %>
-  </div>
-  <div class="check-label">
-    <%= f.label :private %>
-  </div>
-  <div class="check-form">
-    <%= f.check_box :private %>
-  </div>
-  <div class="btn-container">
-    <%= f.submit "Update" %>
-  </div>
+    <div class="form-label">
+      <%= f.label :title %>
+    </div>
+    <div class="form-entry">
+      <%= f.text_field :title, class: "form-width" %>
+    </div>
+    <div class="form-label">
+      <%= f.label :body %>
+    </div>
+    <div class="form-entry">
+      <%= f.text_area :body, rows: 30, class: "form-width" %>
+    </div>
+    <% if premium? && own? %>
+      <div class="check-label">
+        <%= f.label :private %>
+      </div>
+      <div class="check-form">
+        <%= f.check_box :private %>
+      </div>
+    <% elsif !own? %>
+      <div class="check-label">
+        <p>You must own this wiki to make it private</p>
+      </div>
+    <% elsif own? && !premium? %>
+      <div class="check-label">
+        <%= link_to "upgrade to make this wiki private", new_charge_path %>
+      </div>
+    <% end %>
+    <div class="btn-container">
+      <%= f.submit "Update" %>
+    </div>
   <% end %>
 </div>

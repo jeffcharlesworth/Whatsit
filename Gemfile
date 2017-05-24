@@ -16,6 +16,7 @@ end
 
 gem 'devise'
 gem 'pundit'
+gem 'stripe'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -29,7 +30,7 @@ group :development, :test do
  gem 'spring'
  gem 'rspec-rails'
  gem 'shoulda'
- gem 'faker', git: 'git@github.com:stympy/faker.git'  
+ gem 'faker', git: 'git@github.com:stympy/faker.git'
  gem 'factory_girl_rails'
  gem 'pry-rails'
 end

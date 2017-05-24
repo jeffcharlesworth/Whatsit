@@ -3,6 +3,7 @@ class WikisController < ApplicationController
 
   before_action :authenticate_user!
   before_action :update?, except: [:index, :create, :new, :show]
+  before_action :delete?, only: [:destroy]
 
   def new
     @wiki = Wiki.new
