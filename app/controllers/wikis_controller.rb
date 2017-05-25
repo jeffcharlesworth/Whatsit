@@ -11,6 +11,9 @@ class WikisController < ApplicationController
 
   def show
     @wiki = Wiki.find(params[:id])
+    options = { autolink: true, filter_html: true }
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, options)
+    @body = markdown.render(@wiki.body)
   end
 
   def create
