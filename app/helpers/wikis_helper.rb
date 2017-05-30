@@ -1,9 +1,12 @@
 module WikisHelper
+  include ControllerPolicy
+
   def update?
     @wiki = Wiki.find(params[:id])
-    if @wiki.private && @wiki.user_id != current_user.id
-      flash.now[:alert] = "You must own this wiki to make changes."
-      render :show
+
+    if @wiki.private && @wiki.user_id != current_user.id && !is_collaborator(@wiki) && !is_admin?
+      flash[:alert] = "You must own this wiki to make changes."
+      redirect_to wiki_path(@wiki)
     end
   end
 
@@ -18,9 +21,9 @@ module WikisHelper
 
   def delete?
     @wiki = Wiki.find(params[:id])
-    unless @wiki.user_id == current_user.id
-      flash.now[:alert] = "You must own this to delete it"
-      render :show
+    unless @wiki.user_id == current_user.id || is_admin?
+      flash[:alert] = "You must own this to delete it"
+      redirect_to wiki_path(@wiki)
     end
   end
 end

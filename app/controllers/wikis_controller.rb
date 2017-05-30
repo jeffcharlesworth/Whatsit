@@ -41,11 +41,11 @@ class WikisController < ApplicationController
 
     if @wiki.save
       @wiki.update_attributes({ title: params[:wiki][:title], body: params[:wiki][:body], private: params['wiki']['private'] })
-      flash.now[:notice] = "Wiki updated."
-      render :show
+      flash[:notice] = "Wiki updated."
+      redirect_to wiki_path(@wiki)
     else
-      flash.now[:alert] = "Unable to update the wiki, please try again."
-      render :show
+      flash[:alert] = "Unable to update the wiki, please try again."
+      redirect_to wiki_path(@wiki)
     end
   end
 

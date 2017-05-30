@@ -24,11 +24,15 @@ h1 {
 }
 
 .nav-item-width > li {
-  width: 100px;
+  margin-right: 50px;
   float: right;
 }
 
 .main-container {
   margin-left: 10%;
   margin-right: 10%;
+}
+
+.account-btn {
+  width: 6rem;
 }

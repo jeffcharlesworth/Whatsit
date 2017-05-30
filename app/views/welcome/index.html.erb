@@ -1,15 +1,15 @@
 <h1>Wikis</h1>
 <% @wikis.each do |wiki| %>
-  <% unless private?(wiki) %>
-    <div class="clearfix">
-      <div class="col-md-6 index-btn">
+  <div class="clearfix">
+    <div class="col-md-6 index-btn">
+      <h3>
         <%= link_to wiki.title, { :controller => "wikis", :action => "show", :id => wiki.id }, class: "col-md-6" %>
-      </div>
-      <div class="col-md-3 index-btn">
-        <%= link_to "Edit", edit_wiki_path(wiki) %>
-      </div>
+      </h3>
     </div>
-  <% end %>
+    <div class="col-md-3 index-btn">
+      <%= link_to "edit", edit_wiki_path(wiki) %>
+    </div>
+  </div>
 <% end %>
 <div class="new-wiki">
   <%=link_to "New Wiki", new_wiki_path, class: "btn btn-default" %>
