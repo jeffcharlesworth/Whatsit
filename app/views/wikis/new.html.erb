@@ -10,7 +10,9 @@
       <%= f.label :body %>
     </div>
     <div class="form-entry">
-      <%= f.text_area :body, rows: 30, class: "form-width" %>
+      <div id="epiceditor">
+        <%= f.text_area :body, rows: 30, class: "form-width" %>
+      </div>
     </div>
     <% if premium? %>
       <div class="check-label">
@@ -29,3 +31,12 @@
     </div>
   <% end %>
 </div>
+<script type="text/javascript">
+  var opts = {
+    autogrow: true,
+    autogrow: {
+      minHeight: 800
+    }
+  }
+  var editor = new EpicEditor(opts).load();
+</script>

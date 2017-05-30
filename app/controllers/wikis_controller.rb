@@ -22,9 +22,10 @@ class WikisController < ApplicationController
 
     if @wiki.save
       flash[:notice] = "Wiki created"
-      redirect_to wikis_path
+      redirect_to wiki_path(@wiki)
     else
-      flash.now[:alert] = "Error creating wiki, please try again"
+      flash[:alert] = "Error creating wiki, please try again"
+      redirect_to wikis_path
     end
   end
 
