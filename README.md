@@ -1,18 +1,18 @@
 README
 
 ## Introduction
-This was a self directed project and my second rails app, no code copied, no samples provided. The purpose of blocipedia was to create a functioning wiki site. 
-Blocipedia has standard, premium and admin roles. 
-Users are able upgrade to premiumn and pay a fee through stripe. 
+The purpose of Whatsit was to create a site for users to create their own wikis. The site has been monitized by adding features for premium users.  
+Whatsit has standard, premium and admin roles.
+Users are able upgrade to premiumn and pay a fee through stripe.
 Premium accounts let users create private wikis.
-All users can add wiki collaborators. 
+All users can add wiki collaborators.
 Wikis can be created using markup with Redcarpet.
 Devise is used for authentication.
 pics and comments, favorite and receive updates on comments via email.
 
 ## Live
 
-https://blocipedia-jc.herokuapp.com/
+https://whatsit.herokuapp.com/
 
 Installation
 
